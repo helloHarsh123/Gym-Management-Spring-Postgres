@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Members</title>
+</head>
+<body>
+  <h1>Members</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Plan</th>
+        <th>Start Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="member : ${members}">
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.plan}"></td>
+        <td th:text="${member.StartDate}"></td>
+        <td th:text="${member.isActive() ? 'Active' : 'Inactive'}"></td>
+        <td>
+          <a th:href="@{/members/{id}(id=${member.id})}">Details</a> |
+          <a th:href="@{/members/{id}/edit(id=${member.id})}">Edit</a>
+          <form th:action="@{/members/{id}/delete(id=${member.id})}" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="/members/new">Add New Member</a>
+</body>
+</html>

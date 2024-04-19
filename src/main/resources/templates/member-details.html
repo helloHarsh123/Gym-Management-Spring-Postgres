@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Member Details</title>
+</head>
+<body>
+  <h1>Member Details</h1>
+  <p>Name: <span th:text="${member.name}"></span></p>
+  <p>Email: <span th:text="${member.email}"></span></p>
+  <p>Plan: <span th:text="${member.plan}"></span></p>
+  <p>Start Date: <span th:text="${member.startDate}"></span></p>
+  <p>Status: <span th:text="${member.isActive() ? 'Active' : 'Inactive'}"></span></p>
+  <a href="/members">Back to Members</a>
+</body>
+</html>
