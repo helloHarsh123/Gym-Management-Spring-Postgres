@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Member</title>
+</head>
+<body>
+  <h1>Edit Member</h1>
+  <form th:action="@{/members/{id}/update(id=${member.id})}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="${member.name}">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="${member.email}">
+    <br>
+    <label for="plan">Plan:</label>
+    <select id="plan" name="plan" th:field="${member.plan}">
+      <option th:each="plan : ${T(com.hg.gym.model.Member.Plan).values()}"
+              th:value="${plan}" th:text="${plan}">
+      </option>
+    </select>
+    <br>
+    <label for="startDate">Start Date:</label>
+    <span th:text="${member.startDate}"></span>
+    <input type="date" id="startDate" name="startDate" th:field="${{member.startDate}}">
+    <br>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>
+
